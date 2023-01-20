@@ -56,7 +56,7 @@ def report
       }.tap do |r|
         proxy, error = http_proxy
         r["http_proxy"] = proxy
-        r["http_proxy_error"] = error if error
+        r["http_proxy_error"] = error
       end
     end
 end
