@@ -207,6 +207,8 @@ def http_proxy
 
   proxy = try_http_proxy_value(ENV["HTTP_PROXY"])
   return [proxy, error] if proxy
+
+  [nil, error]
 end
 
 def try_http_proxy_value(value)
