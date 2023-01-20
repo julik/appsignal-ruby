@@ -22,6 +22,7 @@ module Appsignal
     # @api private
     def add(severity, message = nil, group = nil)
       severity ||= UNKNOWN
+      puts "LOG: #{message}"
       return true if severity < level
       group = @group if group.nil?
       if message.nil?
@@ -47,6 +48,8 @@ module Appsignal
                         else
                           0
                         end
+
+      puts "LOG (#{severity_number}) (EXT): #{message}"
       Appsignal::Extension.log(
         group,
         severity_number,
@@ -61,9 +64,11 @@ module Appsignal
     # @param attributes Attributes to tag the log with
     # @return [void]
     def debug(message = nil, attributes = {})
+      puts "DEBUG: #{message}"
       return if DEBUG < level
       message = yield if message.nil? && block_given?
       return if message.nil?
+      puts "DEBUG (EXT): #{message}"
       Appsignal::Extension.log(
         @group,
         2,
@@ -77,9 +82,11 @@ module Appsignal
     # @param attributes Attributes to tag the log with
     # @return [void]
     def info(message = nil, attributes = {})
+      puts "INFO: #{message}"
       return if INFO < level
       message = yield if message.nil? && block_given?
       return if message.nil?
+      puts "INFO (EXT): #{message}"
       Appsignal::Extension.log(
         @group,
         3,
@@ -93,9 +100,11 @@ module Appsignal
     # @param attributes Attributes to tag the log with
     # @return [void]
     def warn(message = nil, attributes = {})
+      puts "WARN: #{message}"
       return if WARN < level
       message = yield if message.nil? && block_given?
       return if message.nil?
+      puts "WARN (EXT): #{message}"
       Appsignal::Extension.log(
         @group,
         5,
@@ -109,9 +118,11 @@ module Appsignal
     # @param attributes Attributes to tag the log with
     # @return [void]
     def error(message = nil, attributes = {})
+      puts "ERROR: #{message}"
       return if ERROR < level
       message = yield if message.nil? && block_given?
       return if message.nil?
+      puts "ERROR (EXT): #{message}"
       Appsignal::Extension.log(
         @group,
         6,
@@ -125,9 +136,11 @@ module Appsignal
     # @param attributes Attributes to tag the log with
     # @return [void]
     def fatal(message = nil, attributes = {})
+      puts "FATAL: #{message}"
       return if FATAL < level
       message = yield if message.nil? && block_given?
       return if message.nil?
+      puts "FATAL (EXT): #{message}"
       Appsignal::Extension.log(
         @group,
         7,
