@@ -165,10 +165,10 @@ if DependencyHelper.rails_present?
                       "backtrace" => kind_of(String)
                     },
                     "sample_data" => hash_including(
-                      "tags" => {
+                      "tags" => hash_including(
                         "duplicated_tag" => "duplicated value",
                         "severity" => "warning"
-                      }
+                      )
                     )
                   )
                 end
@@ -186,11 +186,11 @@ if DependencyHelper.rails_present?
                   transaction_hash = transaction.to_h
                   expect(transaction_hash).to include(
                     "sample_data" => hash_including(
-                      "tags" => {
+                      "tags" => hash_including(
                         "tag1" => "value1",
                         "tag2" => "value2",
                         "severity" => "warning"
-                      }
+                      )
                     )
                   )
                 end
@@ -275,11 +275,11 @@ if DependencyHelper.rails_present?
               transaction_hash = transaction.to_h
               expect(transaction_hash).to include(
                 "sample_data" => hash_including(
-                  "tags" => {
+                  "tags" => hash_including(
                     "tag1" => "value1",
                     "tag2" => "value2",
                     "severity" => "warning"
-                  }
+                  )
                 )
               )
             end
