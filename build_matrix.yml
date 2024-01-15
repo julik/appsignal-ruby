@@ -5,7 +5,7 @@ semaphore: # Default `.semaphore/semaphore.yml` contents
   agent:
     machine:
       type: e1-standard-2
-      os_image: ubuntu1804
+      os_image: ubuntu2004
 
   # Cancel all running and queued workflows before this one
   auto_cancel:
@@ -145,16 +145,16 @@ matrix:
       value: "1"
   prologue: # Shared for all jobs in the build matrix
     commands:
-      - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)
-      - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)
+      - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)-ubuntu2004
+      - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)-ubuntu2004
       - ./support/install_deps
       - bundle config set clean 'true'
       - ./support/bundler_wrapper install --jobs=3 --retry=3
   epilogue: # Shared for all jobs in the build matrix
     on_pass:
       commands:
-        - cache store $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec) .bundle
-        - cache store $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec) $HOME/.gem
+        - cache store $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)-ubuntu2004 .bundle
+        - cache store $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum appsignal.gemspec)-ubuntu2004 $HOME/.gem
 
   defaults:
     rubygems: "latest"

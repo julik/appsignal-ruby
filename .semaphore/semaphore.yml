@@ -8,7 +8,7 @@ name: AppSignal Ruby Build and Tests
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+    os_image: ubuntu2004
 auto_cancel:
   running:
     when: branch != 'main' AND branch != 'develop'
@@ -148,9 +148,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -162,9 +162,9 @@ blocks:
       on_pass:
         commands:
         - cache store $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-          appsignal.gemspec) .bundle
+          appsignal.gemspec)-ubuntu2004 .bundle
         - cache store $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-          appsignal.gemspec) $HOME/.gem
+          appsignal.gemspec)-ubuntu2004 $HOME/.gem
     jobs:
     - name: Ruby 2.7.8 for no_dependencies
       env_vars:
@@ -200,9 +200,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -543,9 +543,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -581,9 +581,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -978,9 +978,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -1016,9 +1016,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -1395,9 +1395,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -1433,9 +1433,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -1812,9 +1812,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
@@ -1850,9 +1850,9 @@ blocks:
     prologue:
       commands:
       - cache restore $_BUNDLER_CACHE-bundler-$RUBY_VERSION-$GEMSET-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - cache restore $_GEMS_CACHE-gems-$RUBY_VERSION-$(checksum $BUNDLE_GEMFILE)-$(checksum
-        appsignal.gemspec)
+        appsignal.gemspec)-ubuntu2004
       - "./support/install_deps"
       - bundle config set clean 'true'
       - "./support/bundler_wrapper install --jobs=3 --retry=3"
